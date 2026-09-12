@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.testplatform.mapper.ReportMapper">
+
+    <!--
+      按项目统计用例状态分布
+      三表关联：project → test_requirement → test_case
+      按 test_case.status 分组统计数量
+    -->
+    <select id="countCaseStatusByProjectId" resultType="java.util.Map">
+        SELECT tc.status AS status, COUNT(*) AS count
+        FROM test_case tc
+        JOIN test_requirement tr ON tc.requirement_id = tr.id
+        WHERE tr.project_id = #{projectId}
+        GROUP BY tc.status
+    </select>
+
+    <!-- 按项目统计Bug严重程度分布 -->
+    <select id="countBugSeverityByProjectId" resultType="java.util.Map">
+        SELECT severity AS severity, COUNT(*) AS count
+        FROM bug
+        WHERE project_id = #{projectId}
+        GROUP BY severity
+    </select>
+
+    <!-- 按项目统计Bug状态分布 -->
+    <select id="countBugStatusByProjectId" resultType="java.util.Map">
+        SELECT status AS status, COUNT(*) AS count
+        FROM bug
+        WHERE project_id = #{projectId}
+        GROUP BY status
+    </select>
+
+</mapper>

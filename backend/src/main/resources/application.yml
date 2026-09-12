@@ -1,0 +1,39 @@
+# 服务端口配置
+server:
+  port: 8080
+
+# Spring 数据源配置：使用 SQLite 嵌入式数据库
+spring:
+  # 文件上传配置：单文件最大20MB，请求最大20MB
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+  datasource:
+    # SQLite 数据库文件存放在项目 backend/data/ 目录下（相对路径，跨平台兼容）
+    url: jdbc:sqlite:./data/test_platform.db
+    driver-class-name: org.sqlite.JDBC
+    # SQLite 不需要用户名密码，留空即可
+  # 启动时自动执行 schema.sql 建表（always 表示每次启动都执行，SQL里用了 IF NOT EXISTS 所以不会重复建表）
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:db/schema.sql
+      encoding: UTF-8   # 指定SQL文件编码为UTF-8，防止Windows下中文乱码
+
+# MyBatis 配置
+mybatis:
+  # 指定 Mapper XML 文件的位置
+  mapper-locations: classpath:mapper/*.xml
+  # 实体类所在包，这样 XML 中可以直接写类名而不用写全限定名
+  type-aliases-package: com.testplatform.entity
+  configuration:
+    # 开启驼峰命名自动映射：数据库字段 create_time 自动映射到 Java 属性 createTime
+    map-underscore-to-camel-case: true
+    # 打印 SQL 日志，方便调试
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# 日志级别
+logging:
+  level:
+    com.testplatform: debug

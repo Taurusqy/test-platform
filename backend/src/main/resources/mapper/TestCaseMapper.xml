@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.testplatform.mapper.TestCaseMapper">
+
+    <!-- 根据需求ID查询用例列表，关联查询Bug编号 -->
+    <select id="findByRequirementId" resultType="com.testplatform.entity.TestCase">
+        SELECT tc.id, tc.case_no, tc.requirement_id, tc.module, tc.title, tc.test_purpose, tc.precondition, tc.steps, tc.expected_result,
+               tc.priority, tc.case_type, tc.status, tc.actual_result, tc.attachment, tc.remark, tc.executor, tc.execute_time,
+               tc.create_time, tc.update_time,
+               GROUP_CONCAT(b.bug_no, ', ') AS related_bug_nos
+        FROM test_case tc
+        LEFT JOIN bug b ON tc.id = b.case_id
+        WHERE tc.requirement_id = #{requirementId}
+        GROUP BY tc.id
+        ORDER BY tc.id ASC
+    </select>
+
+    <!-- 根据ID查询单个用例，关联查询Bug编号 -->
+    <select id="findById" resultType="com.testplatform.entity.TestCase">
+        SELECT tc.id, tc.case_no, tc.requirement_id, tc.module, tc.title, tc.test_purpose, tc.precondition, tc.steps, tc.expected_result,
+               tc.priority, tc.case_type, tc.status, tc.actual_result, tc.attachment, tc.remark, tc.executor, tc.execute_time,
+               tc.create_time, tc.update_time,
+               GROUP_CONCAT(b.bug_no, ', ') AS related_bug_nos
+        FROM test_case tc
+        LEFT JOIN bug b ON tc.id = b.case_id
+        WHERE tc.id = #{id}
+        GROUP BY tc.id
+    </select>
+
+</mapper>
