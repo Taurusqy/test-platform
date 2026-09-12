@@ -8,6 +8,16 @@
 ![Element Plus](https://img.shields.io/badge/Element%20Plus-2.7-409eff)
 ![License](https://img.shields.io/badge/license-MIT-yellow)
 
+## 界面预览
+
+| 项目工作台 | 需求管理 |
+|:---:|:---:|
+| ![项目工作台](docs/screenshots/01_project_list.png) | ![需求管理](docs/screenshots/02_requirement_list.png) |
+| 测试用例管理 | Bug缺陷管理 |
+| ![测试用例](docs/screenshots/03_case_list.png) | ![Bug管理](docs/screenshots/04_bug_list.png) |
+| 测试报告 | - |
+| ![测试报告](docs/screenshots/05_report.png) | - |
+
 ## 功能特性
 
 ### 项目管理
