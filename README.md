@@ -77,32 +77,58 @@
 - Node.js 18+
 - npm 9+
 
-### 后端启动
+### 环境要求
+- JDK 17+
+- Maven 3.9+
+- Node.js 18+
+- npm 9+
+
+### 获取代码
+
+#### 方式一：git clone（推荐）
+
+打开命令行（CMD或PowerShell），进入你想存放项目的目录，然后执行：
 
 ```bash
-# 进入后端目录
-cd backend
+git clone https://github.com/Taurusqy/test-platform.git
+cd test-platform
+```
 
-# 启动（默认端口8080）
+> 执行 `git clone` 后会自动在当前目录下创建 `test-platform` 文件夹，**必须先clone再cd进去**，否则会提示"系统找不到指定的路径"。
+
+#### 方式二：下载ZIP压缩包
+
+在GitHub仓库页面点击 `Code` → `Download ZIP`，下载后解压到任意目录（例如 `D:\test-platform`），然后进入解压后的项目根目录：
+
+```cmd
+# 如果项目在D盘，CMD跨盘符切换需要加 /d 参数
+cd /d D:\test-platform
+```
+
+> Windows CMD 小知识：从C盘切换到D盘的文件夹，必须用 `cd /d D:\xxx`，直接 `cd D:\xxx` 不会生效。
+
+### 启动后端
+
+在项目根目录下执行：
+
+```bash
+cd backend
 mvn spring-boot:run
 ```
 
-启动后自动创建数据库表和示例数据，数据库文件位于 `backend/data/test_platform.db`。
+启动后自动创建数据库表和示例数据，数据库文件位于 `backend/data/test_platform.db`，后端默认端口 **8080**。
 
-### 前端启动
+### 启动前端
+
+**新开一个命令行窗口**，在项目根目录下执行：
 
 ```bash
-# 进入前端目录
 cd frontend
-
-# 安装依赖
-npm install
-
-# 启动开发服务器（默认端口5173）
+npm install      # 首次运行需要安装依赖，之后不需要再执行
 npm run dev
 ```
 
-浏览器访问 `http://localhost:5173` 即可使用。
+前端默认端口 **5173**（如果被占用会自动用5174），浏览器访问 `http://localhost:5173` 即可使用。
 
 ### 运行自动化测试
 
