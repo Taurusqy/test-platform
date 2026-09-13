@@ -77,12 +77,6 @@
 - Node.js 18+
 - npm 9+
 
-### 环境要求
-- JDK 17+
-- Maven 3.9+
-- Node.js 18+
-- npm 9+
-
 ### 获取代码
 
 #### 方式一：git clone（推荐）
