@@ -4,13 +4,13 @@ backend/target/
 *.jar
 *.war
 
-# ===== SQLite 数据库（启动时自动重建，不上传） =====
+# ===== SQLite database (auto-created on startup, do not upload) =====
 backend/data/*.db
 backend/data/*.db-journal
 backend/data/*.db-wal
 backend/data/*.db-shm
 
-# ===== 用户上传文件（运行时生成，不上传） =====
+# ===== User uploaded files (generated at runtime, do not upload) =====
 backend/uploads/*
 !backend/uploads/.gitkeep
 
@@ -26,16 +26,16 @@ frontend/.vite/
 *.ipr
 *.iws
 
-# ===== 日志 =====
+# ===== Logs =====
 *.log
 logs/
 
-# ===== 系统文件 =====
+# ===== System files =====
 .DS_Store
 Thumbs.db
 desktop.ini
 
-# ===== Python 测试缓存 =====
+# ===== Python test cache =====
 tests/__pycache__/
 tests/.pytest_cache/
 *.pyc

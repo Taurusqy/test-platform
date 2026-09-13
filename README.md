@@ -178,7 +178,8 @@ test-platform/
 │   └── test_report.py                   # 报告模块测试
 ├── README.md
 ├── 数据库设计文档.md
-└── 简历项目描述&面试要点.md
+├── LICENSE
+└── docs/screenshots/       # 界面截图（README引用）
 ```
 
 ## API 接口
